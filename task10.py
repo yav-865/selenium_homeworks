@@ -122,7 +122,7 @@ else:
 mfont_old = re.findall(r'\d+', font_old_main)
 mfont_new = re.findall(r'\d+', font_new_main)
 
-if mfont_old[0]<mfont_new[0]:
+if int(mfont_old[0]) < int(mfont_new[0]):
     print('Акционная цена на главной крупнее')
 else:
     print('Обычная цена на главной крупнее')
