@@ -130,7 +130,7 @@ else:
 cfont_old = re.findall(r'\d+', font_old_card)
 cfont_new = re.findall(r'\d+', font_new_card)
 
-if cfont_old[0]<cfont_new[0]:
+if int(cfont_old[0]) < int(cfont_new[0]):
     print('Акционная цена в карточке крупнее')
 else:
     print('Обычная цена в карточке крупнее')
