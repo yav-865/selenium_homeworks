@@ -7,7 +7,8 @@ driver.maximize_window()
 wait = WebDriverWait(driver, 20)
 driver.get('http://localhost/litecart/')
 for i in range(3):
-    driver.find_element(By.CSS_SELECTOR,'div.content li:first-child a.link').click()
+    item = driver.find_element(By.CSS_SELECTOR,'div.content li:first-child a.link')
+    item.click()
     driver.implicitly_wait(20)
     cart = driver.find_element(By.CSS_SELECTOR, 'span.quantity')
     count = int(cart.get_attribute("textContent"))+1
@@ -17,8 +18,9 @@ for i in range(3):
 driver.find_element(By.LINK_TEXT, 'Checkout »').click()
 list = driver.find_elements(By.CSS_SELECTOR, 'li.item')
 for item in list:
+    cart_item = driver.find_element(By.CSS_SELECTOR, 'td.item')
     driver.find_element(By.NAME, 'remove_cart_item').click()
-    wait.until(EC.staleness_of(driver.find_element(By.CSS_SELECTOR, 'td.item')))
+    wait.until(EC.staleness_of(cart_item))
 driver.close()
 driver.quit()
 
